@@ -1,3 +1,4 @@
+from player import Player
 from room import Room
 
 # Declare all the rooms
@@ -38,14 +39,86 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+print("Welcome to Aja's Adventure Game")
+
+name = input("Please enter your name: ")
+location = room['outside']
+
+player = Player(name, location)
+
+print(f"Hi {name}, {location}")
+
+print("Where do you want to go next?")
+
+
+def choose_direction():
+    return(input("[n] north, [s] south, [w] west, [e] east, [9] Quit\n"))
+
+
+option = choose_direction()
+
+def next_step():
+    print(location)
+    print("Where do you want to go next?")
+    global option
+    option = choose_direction()
+
+def wrong_way():
+    print("Oops you can't go that way, try again")
+    global option
+    option = choose_direction()
+
+while not option == 9:
+    if location == room['outside']:
+        if option == 'n':
+            location = room['outside'].n_to
+            next_step()
+        else:
+            wrong_way()
+    elif location == room['foyer']:
+        if option == 's':
+            location = room['foyer'].s_to
+            next_step()
+        elif option == 'n':
+            location = room['foyer'].n_to
+            next_step()
+        elif option == 'e':
+            location = room['foyer'].e_to
+            next_step()
+        else:
+            wrong_way()
+    elif location == room['overlook']:
+        if option == 's':
+            location = room['overlook'].s_to
+            next_step()
+        else:
+            wrong_way()
+    elif location == room['narrow']:
+        if option == 'w':
+            location = room['narrow'].w_to
+            next_step()
+        elif option == 'n':
+            location = room['narrow'].n_to
+            next_step()
+        else:
+            wrong_way()
+    elif location == room['treasure']:
+        if option == 's':
+            location = room['narrow'].s_to
+            next_step()
+        else:
+            wrong_way()
+    else:
+        wrong_way()
+
 
 # Write a loop that:
 #
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
+# * Prints the current room name √
+# * Prints the current description (the textwrap module might be useful here).√
 # * Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
-# If the user enters "q", quit the game.
+# If the user enters "q", quit the game
