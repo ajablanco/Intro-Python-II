@@ -52,7 +52,7 @@ print("Where do you want to go next?")
 
 
 def choose_direction():
-    return(input("[n] north, [s] south, [w] west, [e] east, [9] Quit\n"))
+    return(input("[n] north, [s] south, [w] west, [e] east, [q] Quit\n"))
 
 
 option = choose_direction()
@@ -68,7 +68,7 @@ def wrong_way():
     global option
     option = choose_direction()
 
-while not option == 9:
+while not option == 'q':
     if location == room['outside']:
         if option == 'n':
             location = room['outside'].n_to
