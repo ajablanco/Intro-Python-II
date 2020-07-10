@@ -119,10 +119,14 @@ while running:
             next_step()
         elif option == 'p':
             pickup = input("What item do you want to pick up?")
-            player.pickup_item(room['outside'].items, pickup)
-            print(f'You have successfully picked up the {pickup}')
-            room['outside'].remove_item(pickup)
-            next_step()
+            if pickup in [item.name for item in room["outside"].items]:
+                player.pickup_item(room['outside'].items, pickup)
+                print(f'You have successfully picked up the {pickup}')
+                room['outside'].remove_item(pickup)
+                next_step()
+            else:
+                print("Item not in room")
+                next_step()
         elif option == 'i':
             see_inventory()
         elif option == 'd':
@@ -149,10 +153,14 @@ while running:
             next_step()
         elif option == 'p':
             pickup = input("What item do you want to pick up?")
-            player.pickup_item(room['foyer'].items, pickup)
-            print(f'You have successfully picked up the {pickup}')
-            room['foyer'].remove_item(pickup)
-            next_step()
+            if pickup in [item.name for item in room["foyer"].items]:
+                player.pickup_item(room['foyer'].items, pickup)
+                print(f'You have successfully picked up the {pickup}')
+                room['foyer'].remove_item(pickup)
+                next_step()
+            else:
+                print("Item not in room")
+                next_step()
         elif option == 'i':
             see_inventory()
         elif option == 'd':
@@ -174,10 +182,14 @@ while running:
             next_step()
         elif option == 'p':
             pickup = input("What item do you want to pick up?")
-            player.pickup_item(room['overlook'].items, pickup)
-            print(f'You have successfully picked up the {pickup}')
-            room['overlook'].remove_item(pickup)
-            next_step()
+            if pickup in [item.name for item in room["overlook"].items]:
+                player.pickup_item(room['overlook'].items, pickup)
+                print(f'You have successfully picked up the {pickup}')
+                room['overlook'].remove_item(pickup)
+                next_step()
+            else:
+                print("Item not in room")
+                next_step()
         elif option == 'i':
             see_inventory()
         elif option == 'd':
@@ -202,10 +214,14 @@ while running:
             next_step()
         elif option == 'p':
             pickup = input("What item do you want to pick up?")
-            player.pickup_item(room['narrow'].items, pickup)
-            print(f'You have successfully picked up the {pickup}')
-            room['narrow'].remove_item(pickup)
-            next_step()
+            if pickup in [item.name for item in room["narrow"].items]:
+                player.pickup_item(room['narrow'].items, pickup)
+                print(f'You have successfully picked up the {pickup}')
+                room['narrow'].remove_item(pickup)
+                next_step()
+            else:
+                print("Item not in room")
+                next_step()
         elif option == 'i':
             see_inventory()
         elif option == 'd':
@@ -227,10 +243,14 @@ while running:
             next_step()
         elif option == 'p':
             pickup = input("What item do you want to pick up?")
-            player.pickup_item(room['narrow'].items, pickup)
-            print(f'You have successfully picked up the {pickup}')
-            room['narrow'].remove_item(pickup)
-            next_step()
+            if pickup in [item.name for item in room["treasure"].items]:
+                player.pickup_item(room['treasure'].items, pickup)
+                print(f'You have successfully picked up the {pickup}')
+                room['treasure'].remove_item(pickup)
+                next_step()
+            else:
+                print("Item not in room")
+                next_step()
         elif option == 'i':
             see_inventory()
         elif option == 'd':

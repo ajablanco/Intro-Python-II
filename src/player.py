@@ -18,7 +18,8 @@ class Player:
                 self.items.remove(i)
 
     def see_inventory(self):
-        print(self.items)
+        for i in self.items:
+            print(i.name)
 
     def __str__(self):
         return f"{self.name} is at {self.room}"
