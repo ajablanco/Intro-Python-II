@@ -65,9 +65,9 @@ name = input("Please enter your name: ")
 
 location = room['outside']
 
-inventory = []
+items = []
 
-player = Player(name, location, inventory)
+player = Player(name, location, items)
 
 print(f"Hi {name}, {location}")
 
@@ -79,20 +79,20 @@ def choose_action():
 
 option = choose_action()
 
-inventory_action = 0
+# inventory_action = 0
 
 def see_inventory():
     print('inventory: ')
     player.see_inventory()
     global option
-    option = input("Choose another action: [n] north, [s] south, [w] west, [e] east, [p] pickup item, [d] drop item, [q] Quit\n")
+    option = input("Choose another action: [n] north, [s] south, [w] west, [e] east, [p] pickup item, [d] drop item, [i] see inventory, [q] Quit\n")
     
 
 def drop(item, current_room):
     for i in range(len(player.items)):
         if item == player.items[i].name:
             global room
-            room[current_room].items.append(player.items[i])
+            room[current_room].items.remove(player.items[i])
 
 
 def next_step():
